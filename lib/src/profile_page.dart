@@ -2,7 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget{
-  const ProfilePage({super.key});
+   ProfilePage({super.key});
+
+  List<String> posts = [
+    "https://appdevprianto.xyz/images/potato.jpg",
+    "https://appdevprianto.xyz/images/redchilli.jpg",
+    "https://appdevprianto.xyz/images/tomato.jpg",
+    "https://appdevprianto.xyz/images/onion.jpg",
+    "https://appdevprianto.xyz/images/lemon.jpg",
+    "https://appdevprianto.xyz/images/carrot.jpg"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -272,8 +281,47 @@ centerTitle: true,
               thickness: 2,
               color:Color(0xFFD5CDCD) ,
             ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: posts.length,
+              itemBuilder: (context,index){
+                return Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: AssetImage("assets/images/profile.jpg"),
+                      ),
+                      title: Text("Prianto Chandra Dey"),
+                    ),
+                    Image.network(posts[index]),
+                    Padding(padding: EdgeInsets.only(left: 10,right: 15),
+
+
+                  child :  Row(
+                      children: [
+                        IconButton(onPressed: () {
+
+                        }, icon: Icon(Icons.favorite_border,color: Colors.grey,)),
+                        IconButton(onPressed: () {}, icon: Icon(Icons.chat_bubble_outline,color: Colors.grey,)),
+                        Spacer(),
+                        IconButton(onPressed: () {}, icon: Icon(Icons.send,color: Colors.grey,)),
+
+                      ],
+                    ),),
+                   // SizedBox(height: 10,),
+                    Divider(
+                      thickness: 4,
+                      color:Color(0xFFD5CDCD) ,
+                    )
+                  ],
+                );
+
+              }
+            )
 
           ],
+
 
         ),
 
